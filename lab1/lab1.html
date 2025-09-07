@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Лабораторна робота 1</title>
+<a href="task6-7.html">Завдання 6,7</a>
+</head>
+<body>
+
+<h3> Завдання 1.</h3>
+<p> Це звичайний HTML абзац.</p>
+<script>
+document.write("Привіт! Мене звати Діана Магас, студентка групи ІПЗ-22.");
+</script>
+<p>Знову звичайний HTML абзац.</p>
+<form>
+    <input type="button" value="Click me" onClick="alert('Я народилася 23.10.2006 року в місті Івано-Франківськ')">
+</form>
+
+<hr>
+<h3> Завдання 2.</h3>
+<script>
+function calculation() {
+    let x = 12;
+    let y = 5;
+    let z = 6;
+    let result = (x * z) / y;
+    alert(result);
+}
+</script>
+<form>
+    <input type="button" value="Calculate" onClick="calculation()">
+</form>
+
+<hr>
+
+<h3>Завдання 3</h3>
+<script>
+function fun(a) {
+    main_form.t_res.value = a;
+}
+function fun1(a) {
+    main_form.t_res2.value = a;
+}
+</script>
+</head>
+<body onLoad="fun('Відбулося завантаження сторінки');">
+<form id="main_form" name="main_form">
+<input type="text" size="100" value="onChange" 
+ onChange="fun('Спрацювала подія onChange!');"><br><br>
+
+<input type="text" size="100" name="t_res"><br><br>
+
+<input type="text" size="100" value="onSelect" 
+onSelect="fun1('Спрацювала подія onSelect!');"><br><br>
+<input type="text" size="100" name="t_res2">
+</form>
+</body>
+</html>
+
+<hr>
+
+<h3> Завдання 4.</h3>
+<script>
+function fun4() {
+    let x = parseInt(document.task4.t_x.value);
+    let y = parseInt(document.task4.t_y.value);
+    let F;
+
+    if (x != y) {
+        F = 10*x + y;
+    } else if ((y*y != 2*x*y) || (y < 0)) {
+        F = 2*x*y + 4*x/y;
+    } else {
+        F = x + y*y;
+    }
+
+    document.task4.t_F.value = F;
+}
+</script>
+<form name="task4">
+    <input type="text" name="t_x" value="5"><br>
+    <input type="text" name="t_y" value="3"><br>
+    <input type="text" name="t_F" value=""><br>
+    <input type="button" value="Розрахувати" onClick="fun4();">
+</form>
+
+<hr>
+
+<h3> Завдання 5.</h3>
+<script>
+function fun5() {
+    let x = parseFloat(main_form5.t_x.value);
+    let y = parseFloat(main_form5.t_y.value);
+    let sum = 0.0;
+
+    for (let i = 2; i <= 7; i++) {
+        let factorial = 1;
+        for (let j = 1; j <= i; j++) {
+            factorial *= j;
+        }
+
+        sum += Math.pow(-1, i+1) *
+               ((0.85 * i + (x * y) / (1 + x * x)) / factorial);
+    }
+
+    main_form5.t_res.value = sum;
+}
+</script>
+
+<form id="main_form5" name="main_form5">
+    <input type="text" name="t_x" value="1"><br>
+    <input type="text" name="t_y" value="3"><br>
+    <input type="text" name="t_res" readonly><br>
+    <input type="button" value="Розрахувати" onClick="fun5();">
+</form>
+
+</body>
+</html>

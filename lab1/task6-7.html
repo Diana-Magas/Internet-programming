@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+<meta charset="UTF-8">
+<h3>Завдання 6</h3>
+<script language="JavaScript">
+let product = ["Маркер", "Молоко", "Мило", "Масло", "Мармелад"];
+let quantity = [50, 30, 100, 25, 60];
+let cost = [15, 20, 5, 50, 12];
+let currentIndex = -1;
+
+function fun1() {
+    let form = document.forms["form1"];
+    let name = form.name_cont.value.trim();
+    currentIndex = -1;
+    for (let i = 0; i < product.length; i++) {
+        if (product[i].toLowerCase() === name.toLowerCase()) {
+            currentIndex = i;
+            break;
+        }
+    }
+    if (currentIndex !== -1) {
+        form.output_density.value = "Наявна кількість: " + quantity[currentIndex];
+        form.output_area.value = "Вартість за одиницю: " + cost[currentIndex] + " грн";
+    } else {
+        form.output_density.value = "Товар не знайдено!";
+        form.output_area.value = "";
+    }
+}
+
+function fun2() {
+    let form = document.forms["form1"];
+    if (currentIndex !== -1) {
+        let total = quantity[currentIndex] * cost[currentIndex];
+        form.output_total.value = "Загальна вартість товару '" + product[currentIndex] + "' = " + total + " грн";
+    } else {
+        form.output_total.value = "Спочатку оберіть товар!";
+    }
+}
+</script> 
+</head>
+<body> 
+<form name="form1">
+Введіть назву товару:
+<input type="text" name="name_cont">
+<input type="button" value="Наявна кількість і вартість" onClick="fun1()">
+<br>
+<input type="text" size="70" name="output_density" readonly>
+<input type="text" size="70" name="output_area" readonly>
+<br><br>
+<input type="button" value="Загальна сума" onClick="fun2()">
+<br>
+<input type="text" size="70" name="output_total" readonly>
+</form>
+
+<hr>
+<h3>Завдання 7. </h3>
+
+<form name="form2">
+Виберіть товар:
+<select name="product_select" id="product_select" onchange="fun3()">
+    <option value="">--Оберіть товар--</option>
+    <option value="0">Маркер</option>
+    <option value="1">Молоко</option>
+    <option value="2">Мило</option>
+    <option value="3">Масло</option>
+    <option value="4">Мармелад</option>
+</select>
+<br><br>
+<input type="text" size="70" name="output_density2" readonly>
+<input type="text" size="70" name="output_area2" readonly>
+<br><br>
+<input type="button" value="Загальна сума" onclick="fun4()">
+<br>
+<input type="text" size="70" name="output_total2" readonly>
+</form>
+
+<script>
+let currentIndex2 = -1;
+
+function fun3() {
+    let form = document.forms["form2"];
+    let select = form.product_select;
+    currentIndex2 = parseInt(select.value);
+    if (!isNaN(currentIndex2)) {
+        form.output_density2.value = "Наявна кількість: " + quantity[currentIndex2];
+        form.output_area2.value = "Вартість за одиницю: " + cost[currentIndex2] + " грн";
+    } else {
+        form.output_density2.value = "";
+        form.output_area2.value = "";
+    }
+}
+
+function fun4() {
+    let form = document.forms["form2"];
+    if (currentIndex2 !== -1) {
+        let total = quantity[currentIndex2] * cost[currentIndex2];
+        form.output_total2.value = "Загальна вартість товару '" + product[currentIndex2] + "' = " + total + " грн";
+    } else {
+        form.output_total2.value = "Спочатку оберіть товар!";
+    }
+}
+</script>
+
+</body> 
+</html>
