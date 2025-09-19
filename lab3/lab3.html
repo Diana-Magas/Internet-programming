@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="button-link" href="task4_5_6.html">Завдання 4-6</a>
+  <h2>Завдання 1</h2>
+  <label for="side">Сторона:</label>
+  <input type="number" id="side" step="any" min="0">
+
+  <div id="result">Площа: </div>
+
+  <script>
+    const side = document.getElementById('side');
+    const result = document.getElementById('result');
+
+    side.addEventListener('change', function() {
+      const a = parseFloat(side.value);
+      if (!isNaN(a) && a > 0) {
+        result.textContent = 'Площа: ' + (a * a);
+      } else {
+        result.textContent = 'Площа: ';
+      }
+    });
+  </script>
+
+<hr>
+<h2>Завдання 2: </h2>
+
+<textarea id="output" rows="4" cols="50" placeholder="Тут буде текст"></textarea>
+
+<div id="keyboard" style="margin-top:10px;"></div>
+
+<button id="clearBtn" style="margin-top:8px;">Очистити поле</button>
+
+<script>
+let digits = ['1','2','3','4','5','6','7','8','9','0'];
+let lettersRows = [
+  ['й','ц','у','к','е','н','г','ш','щ','з','х','ї'],
+  ['ф','і','в','а','п','р','о','л','д','ж','є'],
+  ['я','ч','с','м','и','т','ь','б','ю']
+];
+
+const keyboardContainer = document.getElementById('keyboard');
+const outputField = document.getElementById('output');
+const clearBtn = document.getElementById('clearBtn');
+
+function createButton(symbol) {
+  const btn = document.createElement('button');
+  btn.textContent = symbol;
+  btn.style.margin = '2px';
+  btn.style.padding = '6px 10px';
+  btn.style.fontSize = '16px';
+  btn.addEventListener('click', () => {
+    outputField.value += symbol;
+  });
+  return btn;
+}
+
+const digitsRow = document.createElement('div');
+digits.forEach(d => digitsRow.appendChild(createButton(d)));
+keyboardContainer.appendChild(digitsRow);
+
+lettersRows.forEach(rowArr => {
+  const row = document.createElement('div');
+  rowArr.forEach(l => row.appendChild(createButton(l)));
+  keyboardContainer.appendChild(row);
+});
+
+clearBtn.addEventListener('click', () => {
+  outputField.value = '';
+});
+</script>
+
+<hr>
+<h2>Завдання 3: </h2>
+
+<textarea id="output3" rows="4" cols="50" placeholder="Тут буде текст"></textarea>
+
+<div id="keyboard3" style="margin-top:10px;"></div>
+
+<button id="layoutBtn3" style="margin-top:8px;">Alt+Shift</button>
+<button id="clearBtn3" style="margin-top:8px;">Очистити поле</button>
+
+<script>
+(() => {
+    const digits3 = ['0','1','2','3','4','5','6','7','8','9'];
+  const uaLetters3 = ['а','б','в','г','ґ','д','е','є','ж','з','и','і','ї','й','к','л','м','н','о','п','р','с','т','у','ф','х','ц','ч','ш','щ','ь','ю','я'];
+  const enLetters3 = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'];
+
+  const keyboardContainer3 = document.getElementById('keyboard3');
+  const outputField3 = document.getElementById('output3');
+  const clearBtn3 = document.getElementById('clearBtn3');
+  const layoutBtn3 = document.getElementById('layoutBtn3');
+
+  let currentLayout3 = 'ua';
+
+  function createButton3(symbol){
+    const btn = document.createElement('button');
+    btn.textContent = symbol;
+    btn.style.margin = '2px';
+    btn.style.padding = '6px 10px';
+    btn.style.fontSize = '16px';
+    btn.addEventListener('click', () => {
+      outputField3.value += symbol;
+    });
+    return btn;
+  }
+
+  function buildKeyboard3(){
+    keyboardContainer3.innerHTML = '';
+
+    const digitsRow = document.createElement('div');
+    digits3.forEach(d => digitsRow.appendChild(createButton3(d)));
+    keyboardContainer3.appendChild(digitsRow);
+
+    const letters = currentLayout3 === 'ua' ? uaLetters3 : enLetters3;
+    const lettersPerRow= [10, 11, letters.length - 21];
+    let start = 0;
+    lettersPerRow.forEach(count => {
+      const row = document.createElement('div');
+      letters.slice(start, start + count).forEach(l => row.appendChild(createButton3(l)));
+      keyboardContainer3.appendChild(row);
+      start += count;
+    });
+  }
+
+  layoutBtn3.addEventListener('click', () => {
+    currentLayout3 = currentLayout3 === 'ua' ? 'en' : 'ua';
+    buildKeyboard3();
+  });
+
+  clearBtn3.addEventListener('click', () => {
+    outputField3.value = '';
+  });
+
+  buildKeyboard3();
+
+})();
+</script>
+<script src="script.js"></script>
+</body>
+</html>

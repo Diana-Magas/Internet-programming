@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h2>Завдання 4: </h2>
+<div class="image-viewer-container">
+  <img id="viewer" src="" alt="Зображення">
+  <div class="buttons">
+    <button id="prevBtn">Назад</button>
+    <button id="nextBtn">Вперед</button>
+  </div>
+</div>
+
+<hr>
+<h2>Завдання 5: </h2>
+<div class="score" id="score">Загальний рахунок 0% (0 правильних відповідей з 0)</div>
+<div class="task" id="task">Натисніть "Наступне завдання" для початку</div>
+<input type="text" id="answer" placeholder="Введіть відповідь" inputmode="decimal">
+<button id="checkBtn">Перевірити</button>
+
+<button id="nextBtnTest">Наступне завдання</button>
+
+<div class="result" id="result"></div>
+
+<hr>
+<h2>Завдання 6: </h2>
+<div id="tree"></div>
+
+<script>
+  let images = ['images/file1.jpg','images/file2.gif','images/file3.jpg','images/file4.png','images/file5.gif'];
+  const viewer = document.getElementById('viewer');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  let currentIndex = 0;
+
+  function showImage() {
+    viewer.src = images[currentIndex];
+  }
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage();
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage();
+  });
+
+  showImage();
+
+  const maxTasks = 5;
+  let currentTask = 0;
+  let correctAnswers = 0;
+  let a, b, op, correctResult;
+
+  function generateTask() {
+    const operators = ['+', '-', '*', '/'];
+    a = Math.floor(Math.random() * 10);
+    b = Math.floor(Math.random() * 10);
+    op = operators[Math.floor(Math.random() * operators.length)];
+    if (op === '/' && b === 0) b = 1;
+    switch(op) {
+      case '+': correctResult = a + b; break;
+      case '-': correctResult = a - b; break;
+      case '*': correctResult = a * b; break;
+      case '/': correctResult = +(a / b).toFixed(1); break;
+    }
+    document.getElementById('task').textContent = `${a} ${op} ${b} = `;
+    document.getElementById('answer').value = '';
+    document.getElementById('result').textContent = '';
+  }
+
+  document.getElementById('checkBtn').addEventListener('click', () => {
+    if (currentTask >= maxTasks) return;
+    const userAnswer = parseFloat(document.getElementById('answer').value);
+    let isCorrect = false;
+    if (!isNaN(userAnswer)) {
+      if (op === '/') isCorrect = Math.abs(userAnswer - correctResult) < 0.1;
+      else isCorrect = userAnswer === correctResult;
+    }
+    if (isCorrect) {
+      document.getElementById('result').textContent = "Правильно";
+      correctAnswers++;
+    } else {
+      document.getElementById('result').textContent = `Помилка, правильна відповідь «${correctResult}»`;
+    }
+    currentTask++;
+    const percent = Math.round((correctAnswers / currentTask) * 100);
+    document.getElementById('score').textContent = `Загальний рахунок ${percent}% (${correctAnswers} правильних відповідей з ${currentTask})`;
+  });
+
+  document.getElementById('nextBtnTest').addEventListener('click', () => {
+    if (currentTask < maxTasks) generateTask();
+    else {
+      document.getElementById('task').textContent = "Тест завершено!";
+      document.getElementById('answer').disabled = true;
+      document.getElementById('checkBtn').disabled = true;
+      document.getElementById('nextBtnTest').disabled = true;
+    }
+  });
+
+
+const data = {
+  "fruits": ["apple", "pineapple", "appricot", "pear", "lemon"],
+  "vegetables": ["potatoes", "beetroot", "carrots", "pear"]
+};
+
+function createTree(obj) {
+  const ul = document.createElement('ul');
+  for (const key in obj) {
+    const li = document.createElement('li');
+    const span = document.createElement('span');
+    span.textContent = key;
+    li.appendChild(span);
+
+    const subUl = document.createElement('ul');
+    obj[key].forEach(item => {
+      const subLi = document.createElement('li');
+      subLi.textContent = item + ";";
+      subUl.appendChild(subLi);
+    });
+
+    li.appendChild(subUl);
+    span.addEventListener('click', () => li.classList.toggle('open'));
+    ul.appendChild(li);
+  }
+  return ul;
+}
+
+document.getElementById('tree').appendChild(createTree(data));
+</script>
+
+</body>
+</html>
