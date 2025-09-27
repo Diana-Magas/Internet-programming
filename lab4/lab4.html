@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Лабораторна 4</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Лабораторна 4</h2>
+<form id="testForm">
+
+<div class="question">
+  <p>1. Як звали сову Гаррі Поттера?</p>
+  <label><input type="radio" name="radio1" value="1"> Гедвіґа </label>
+  <label><input type="radio" name="radio1" value="0"> Еррол</label>
+  <label><input type="radio" name="radio1" value="0"> Пігвіджон</label>
+  <label><input type="radio" name="radio1" value="0"> Крукшенкс</label>
+</div>
+
+<div class="question">
+  <p>2. Хто був директором Гоґвортсу?</p>
+  <label><input type="radio" name="radio2" value="0"> Северус Снейп</label>
+  <label><input type="radio" name="radio2" value="1"> Альбус Дамблдор </label>
+  <label><input type="radio" name="radio2" value="0"> Мінерва Макґонеґел</label>
+  <label><input type="radio" name="radio2" value="0"> Волдеморт</label>
+</div>
+
+<div class="question">
+  <p>3. Оберіть два дари смерті:</p>
+  <label><input type="checkbox" name="check1" value="1"> Бузинова паличка </label>
+  <label><input type="checkbox" name="check1" value="1"> Плащ-невидимка </label>
+  <label><input type="checkbox" name="check1" value="0"> Щоденник Тома Редла</label>
+  <label><input type="checkbox" name="check1" value="0"> Кільце Ґонтів</label>
+</div>
+
+<div class="question">
+  <p>4. Хто були найкращими друзями Гаррі?</p>
+  <label><input type="checkbox" name="check2" value="1"> Рон Візлі </label>
+  <label><input type="checkbox" name="check2" value="1"> Герміона Ґрейнджер </label>
+  <label><input type="checkbox" name="check2" value="0"> Драко Мелфой</label>
+  <label><input type="checkbox" name="check2" value="0"> Дадлі Дурслі</label>
+</div>
+
+<div class="question">
+  <p>5. На якій вулиці жив Гаррі у сім'ї Дурслів?</p>
+  <select name="select1">
+    <option value="1">Тісна вуличка, 4 (Privet Drive 4) </option>
+    <option value="0">Алея Діаґон</option>
+    <option value="0">Площа Ґримо</option>
+    <option value="0">Стігма Роуд</option>
+  </select>
+</div>
+
+<div class="question">
+  <p>6. Оберіть два факультети Гоґвортсу:</p>
+  <select name="select2" multiple size="4">
+    <option value="1">Ґрифіндор </option>
+    <option value="1">Слизерин </option>
+    <option value="0">Ільверморні</option>
+    <option value="0">Бобатон</option>
+  </select>
+</div>
+
+<div class="question">
+  <p>7. Ім’я головного героя (англійською):</p>
+  <input type="text" name="text1" placeholder="Введіть ім’я">
+</div>
+
+<button type="button" onclick="calculate()">Завершити тестування</button>
+</form>
+
+<h3>Результати</h3>
+<div id="results"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
