@@ -1,0 +1,275 @@
+body {
+  background: url("background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  margin: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.5s, color 0.5s;
+  color: #fff;
+}
+
+header {
+  width: 100%;
+  background: #811111;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  background: crimson;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #ff5a5a;
+}
+
+#themeToggle {
+  background-color: #e70606;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  transition: all 0.4s ease;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: crimson;
+}
+
+.burger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.burger.active {
+  transform: rotate(90deg);
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.popup-content {
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  margin: 15% auto;
+  text-align: center;
+  color: #fff;
+}
+
+.close {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.light {
+  background: url("background_2.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #111;
+  margin: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.light header {
+  background: #7797d7;
+}
+
+.light .nav-links a {
+  color: #330258;
+}
+
+.light button {
+  background: rgb(48, 97, 133);
+  color: #fff;
+}
+
+#tabbed_box_1 {
+  margin: 0 auto;
+  width: 300px;
+}
+
+.tabbed_box h4 {
+  font-size: 23px;
+  color: #fff;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+
+.tabbed_box h4 small {
+  color: #e3e9ec;
+  font-size: 9px;
+  text-transform: uppercase;
+  position: relative;
+  top: -4px;
+  left: 6px;
+}
+
+.tabbed_area {
+  border: 1px solid #843535;
+  background-color: #843535;
+  padding: 8px;
+}
+
+ul.tabs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 5px;
+}
+
+ul.tabs li a {
+  background-color: #d9d9d9;
+  color: #2a1515;
+  padding: 8px 14px;
+  text-decoration: none;
+  font-size: 9px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 1px solid #2a1515;
+  display: inline-block;
+}
+
+ul.tabs li a:hover {
+  background-color: #bf6161;
+}
+
+ul.tabs li a.active {
+  background-color: #421111;
+  border: 1px solid #421111;
+  color: #d9d9d9;
+}
+
+.content {
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #531a1a;
+}
+
+#content_2,
+#content_3 {
+  display: none;
+}
+
+.content ul {
+  margin: 0;
+  padding: 0 20px;
+}
+
+.content ul li {
+  list-style: none;
+  border-bottom: 1px solid #d6dde0;
+  padding: 15px 0;
+  font-size: 13px;
+}
+
+.content ul li a {
+  text-decoration: none;
+  color: #40080a;
+}
+
+.content ul li a small {
+  color: #8b959c;
+  font-size: 9px;
+  text-transform: uppercase;
+  position: relative;
+  left: 4px;
+}
+
+.content ul li:last-child {
+  border-bottom: none;
+}
+
+body.light .tabbed_area {
+  background-color: #fff;
+}
+
+body.light ul.tabs li a {
+  background-color: #403ecb;
+  color: #ffffff;
+}
+
+body.light .content {
+  background-color: #d0d1f3;
+}
+
+.back-button-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.back-button-container button {
+  width: 200px;
+  padding: 10px 15px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #811111;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    border-radius: 5px;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+  }
+
+  .nav-links.active {
+    max-height: 300px;
+    opacity: 1;
+    padding: 10px;
+  }
+
+  body.light .nav-links {
+    background: #7dc1d2;
+  }
+}
