@@ -1,0 +1,96 @@
+body {
+    background-color: #111;
+    color: gold;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+h2 {
+    color: gold;
+    border-bottom: 1px solid gold;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.form-container {
+    background: #1a1a1a;
+    border: 2px solid gold;
+    border-radius: 10px;
+    padding: 25px;
+    width: 400px;
+    margin-top: 15px;
+    box-shadow: 0 0 10px gold;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+input {
+    flex: 1;
+    padding: 8px;
+    border: 2px solid gold;
+    border-radius: 5px;
+    background: #222;
+    color: gold;
+    font-size: 15px;
+}
+
+input.valid {
+    border-color: green;
+}
+
+input.invalid {
+    border-color: red;
+    color: red;
+}
+
+.status {
+    margin-left: 10px;
+    font-size: 20px;
+    width: 25px;
+    text-align: center;
+}
+
+.error {
+    color: red;
+    font-size: 13px;
+    margin-top: 3px;
+    min-height: 18px;
+}
+
+button {
+    background: gold;
+    color: #111;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 50%;
+    display: block;
+    margin: 10px auto;
+}
+
+.back-button-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.back-button-container button {
+    width: 200px;
+    padding: 10px 15px;
+    font-size: 16px;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Лабораторна 6</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Завдання 1. Вивід елементів e-mail</h2>
+    <div id="task1"></div>
+
+    <h2>Завдання 2. Форма з валідацією</h2>
+
+    <div class="form-container">
+      <form id="myForm">
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <div class="input-row">
+            <input type="text" id="email" placeholder="name@pnu.edu.ua" />
+            <span class="status"></span>
+          </div>
+          <div class="error"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="fullname">Ім’я та прізвище:</label>
+          <div class="input-row">
+            <input type="text" id="fullname" placeholder="Ім’я Прізвище" />
+            <span class="status"></span>
+          </div>
+          <div class="error"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="login">Логін:</label>
+          <div class="input-row">
+            <input type="text" id="login" placeholder="login" />
+            <span class="status"></span>
+          </div>
+          <div class="error"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Пароль:</label>
+          <div class="input-row">
+            <input type="password" id="password" placeholder="********" />
+            <span class="status"></span>
+          </div>
+          <div class="error"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="index">Поштовий індекс:</label>
+          <div class="input-row">
+            <input type="text" id="index" placeholder="76000" />
+            <span class="status"></span>
+          </div>
+          <div class="error"></div>
+        </div>
+
+        <button type="button" id="checkBtn">Перевірити</button>
+      </form>
+    </div>
+    <div class="back-button-container">
+      <a href="../index.html">
+        <button>Повернутися на головну</button>
+      </a>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
