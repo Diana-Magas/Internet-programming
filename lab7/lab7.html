@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Лабораторна робота 7</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Лабораторна робота 7</h1>
+
+    <div class="task">
+      <h2>Завдання 1: Довжина рядка</h2>
+      <input type="text" id="input1" placeholder="Введіть рядок" />
+      <button onclick="showLength()">Показати довжину</button>
+      <div class="result" id="result1"></div>
+    </div>
+
+    <div class="task">
+      <h2>Завдання 2: Зміна регістру</h2>
+      <input type="text" id="input2" placeholder="Введіть рядок" />
+      <button onclick="showCase()">Змінити регістр</button>
+      <div class="result" id="result2"></div>
+    </div>
+
+    <div class="task">
+      <h2>Завдання 3: Індекс символу</h2>
+      <input type="text" id="input3" placeholder="Введіть рядок" />
+      <input type="text" id="char" placeholder="Введіть символ" maxlength="1" />
+      <button onclick="showIndex()">Знайти індекс</button>
+      <div class="result" id="result3"></div>
+    </div>
+
+    <div class="task">
+      <h2>Завдання 4: Кількість входжень символу</h2>
+      <input type="text" id="input4" placeholder="Введіть рядок" />
+      <input
+        type="text"
+        id="char4"
+        placeholder="Введіть символ"
+        maxlength="1"
+      />
+      <button onclick="countChar()">Порахувати входження</button>
+      <div class="result" id="result4"></div>
+    </div>
+
+    <div class="task">
+      <h2>Завдання 5: Заміна місцями сусідніх символів</h2>
+      <input type="text" id="input5" placeholder="Введіть рядок" />
+      <button onclick="swapPairs()">Змінити місцями</button>
+      <div class="result" id="result5"></div>
+    </div>
+
+    <div class="task">
+      <h2>Завдання 6: Перевірка спаму</h2>
+      <input type="text" id="input6" placeholder="Введіть рядок" />
+      <button onclick="checkSpam()">Перевірити</button>
+      <div class="result" id="result6"></div>
+    </div>
+
+    <div class="task">
+      <h2>Завдання 7: Скорочення рядка</h2>
+      <input type="text" id="input7" placeholder="Введіть рядок" />
+      <input type="number" id="maxLength" placeholder="Максимальна довжина" />
+      <button onclick="truncateString()">Скоротити</button>
+      <div class="result" id="result7"></div>
+    </div>
+
+    <div class="task">
+      <h2>Завдання 8: Функція, яка видаляє всі голосні літери з рядка</h2>
+      <input type="text" id="input8_3" placeholder="Введіть рядок" />
+      <button onclick="removeVowels()">Видалити голосні</button>
+      <div class="result" id="result8_3"></div>
+    </div>
+
+    <div class="task">
+      <h2>
+        Завдання 9: Функція, яка замінює всі входження слова "JavaScript" на
+        "JS" у рядку
+      </h2>
+      <input type="text" id="input9_3" placeholder="Введіть рядок" />
+      <button onclick="replaceJS()">Замінити</button>
+      <div class="result" id="result9_3"></div>
+    </div>
+
+    <div class="task">
+      <h2>
+        Завдання 10: Функція, яка перевіряє, чи є підрядок в рядку, що є
+        паліндромом, мінімальна довжина підрядка 3 символи
+      </h2>
+      <input type="text" id="input10_3" placeholder="Введіть рядок" />
+      <button onclick="hasPalindromeSubstring()">Перевірити</button>
+      <div class="result" id="result10_3"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
