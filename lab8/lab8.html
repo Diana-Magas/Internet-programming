@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Лабораторна робота №8</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Лабораторна робота №8</h1>
+
+      <div class="task" id="task1">
+        <h2>Завдання 1 — Об'єкт часу та операції</h2>
+        <div class="row">
+          <div class="form-col">
+            <label>Поточний час (години, хвилини, секунди)</label>
+            <div class="inline">
+              <input
+                id="t1-hours"
+                type="number"
+                min="0"
+                max="23"
+                placeholder="години"
+              />
+              <input
+                id="t1-minutes"
+                type="number"
+                min="0"
+                max="59"
+                placeholder="хвилини"
+              />
+              <input
+                id="t1-seconds"
+                type="number"
+                min="0"
+                max="59"
+                placeholder="секунди"
+              />
+            </div>
+            <div class="controls mt">
+              <button id="t1-show">Показати поточний час</button>
+              <button id="t1-add" class="ghost">Додати секунд</button>
+              <button id="t1-clear" class="ghost">Очистити поля</button>
+            </div>
+            <div class="mt small">
+              Додати кількість секунд: введіть у полі "секунди" та натисніть
+              "Додати секунд".
+            </div>
+          </div>
+          <div style="flex: 1">
+            <div id="t1-output" class="output">Результат з'явиться тут.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" id="task2">
+        <h2>
+          Завдання 2 — Дата, останній день місяця, секунди від/до опівночі
+        </h2>
+
+        <div style="border-top: 1px solid #cbd5e1; padding-top: 12px">
+          <div>
+            <strong>2.1. Виведення поточної дати, дня тижня і часу</strong>
+          </div>
+          <div class="controls mt">
+            <button id="t2-1-run">Виконати</button>
+            <button id="t2-1-clear" class="ghost">Очистити</button>
+          </div>
+          <div id="t2-1-output" class="output mt">Результат 2.1</div>
+        </div>
+
+        <div
+          style="
+            border-top: 1px solid #cbd5e1;
+            padding-top: 12px;
+            margin-top: 12px;
+          "
+        >
+          <div><strong>2.2. Останній день місяця</strong></div>
+          <div class="row mt">
+            <div class="form-col">
+              <label>Рік</label>
+              <input id="t2-2-year" type="number" min="1" placeholder="2025" />
+            </div>
+            <div class="form-col">
+              <label>Місяць (1-12)</label>
+              <input
+                id="t2-2-month"
+                type="number"
+                min="1"
+                max="12"
+                placeholder="10"
+              />
+            </div>
+          </div>
+          <div class="controls mt">
+            <button id="t2-2-run">Показати останній день</button>
+            <button id="t2-2-clear" class="ghost">Очистити</button>
+          </div>
+          <div id="t2-2-output" class="output mt">Результат 2.2</div>
+        </div>
+
+        <div
+          style="
+            border-top: 1px solid #cbd5e1;
+            padding-top: 12px;
+            margin-top: 12px;
+          "
+        >
+          <div>
+            <strong
+              >2.3. Секунди від початку сьогоднішнього дня і до початку
+              наступного</strong
+            >
+          </div>
+          <div class="controls mt">
+            <button id="t2-3-run">Показати</button>
+            <button id="t2-3-clear" class="ghost">Очистити</button>
+          </div>
+          <div id="t2-3-output" class="output mt">Результат 2.3</div>
+        </div>
+      </div>
+
+      <div class="task" id="task3">
+        <h2>Завдання 3 — Клас Car</h2>
+        <div class="row">
+          <div class="form-col">
+            <label>Марка</label>
+            <input id="car-brand" type="text" placeholder="Toyota" />
+            <label class="mt">Модель</label>
+            <input id="car-model" type="text" placeholder="Camry" />
+            <label class="mt">Рік</label>
+            <input id="car-year" type="number" placeholder="2020" />
+            <div class="controls mt">
+              <button id="car-show">Показати інформацію</button>
+              <button id="car-clear" class="ghost">Очистити</button>
+            </div>
+          </div>
+          <div style="flex: 1">
+            <div id="car-output" class="output">Результат завдання 3</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" id="task4">
+        <h2>Завдання 4 — Клас ElectricCar</h2>
+        <div class="row">
+          <div class="form-col">
+            <label>Марка</label>
+            <input id="ecar-brand" type="text" placeholder="Tesla" />
+            <label class="mt">Модель</label>
+            <input id="ecar-model" type="text" placeholder="Model 3" />
+            <label class="mt">Рік</label>
+            <input id="ecar-year" type="number" placeholder="2022" />
+            <label class="mt">Ємність батареї (kWh)</label>
+            <input id="ecar-battery" type="number" placeholder="75" />
+            <div class="controls mt">
+              <button id="ecar-show">Показати info і заряджання</button>
+              <button id="ecar-clear" class="ghost">Очистити</button>
+            </div>
+          </div>
+          <div style="flex: 1">
+            <div id="ecar-output" class="output">Результат завдання 4</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" id="task5">
+        <h2>Завдання 5 — Статичний метод</h2>
+        <div class="row">
+          <div class="form-col">
+            <label>Число A</label>
+            <input id="m-a" type="number" placeholder="5" />
+            <label class="mt">Число B</label>
+            <input id="m-b" type="number" placeholder="7" />
+            <div class="controls mt">
+              <button id="m-run">Показати A + B</button>
+              <button id="m-clear" class="ghost">Очистити</button>
+            </div>
+          </div>
+          <div style="flex: 1">
+            <div id="m-output" class="output">Результат завдання 5</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" id="task6">
+        <h2>Завдання 6 — Варіант 3 (Rectangle і Square)</h2>
+        <div class="two-col mt">
+          <div>
+            <label>Ширина (width)</label>
+            <input id="rect-width" type="number" placeholder="5" />
+            <label class="mt">Висота (height)</label>
+            <input id="rect-height" type="number" placeholder="3" />
+            <div class="controls mt">
+              <button id="rect-show">Показати Rectangle</button>
+              <button id="rect-clear" class="ghost">Очистити</button>
+            </div>
+          </div>
+          <div>
+            <label>Сторона квадрата (side)</label>
+            <input id="square-side" type="number" placeholder="4" />
+            <div class="controls mt">
+              <button id="square-show">Показати Square</button>
+              <button id="square-clear" class="ghost">Очистити</button>
+            </div>
+          </div>
+        </div>
+        <div id="task6-output" class="output mt">Результат завдання 6</div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
