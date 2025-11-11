@@ -1,0 +1,94 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: linear-gradient(135deg, #101820, #1b2735);
+    color: #fff;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    margin-top: 40px;
+    color: #50c9ce;
+    text-shadow: 0 0 10px rgba(80, 201, 206, 0.6);
+}
+
+.examples {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 80px;
+    margin: 50px 0 80px;
+}
+
+.anim-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#movingBox,
+#scalingCircle,
+.box {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    border-radius: 14px;
+    box-shadow: 0 0 20px rgba(80, 201, 206, 0.7);
+}
+
+#movingBox {
+    background: linear-gradient(45deg, #4a90e2, #50c9ce);
+}
+
+#scalingCircle {
+    background: radial-gradient(circle, #ff5f6d, #ffc371);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 195, 113, 0.7);
+}
+
+.box {
+    background: linear-gradient(45deg, #7b2ff7, #f107a3);
+    box-shadow: 0 0 25px rgba(241, 7, 163, 0.7);
+    border-radius: 16px;
+}
+
+.anim-block p {
+    margin: 0;
+    font-weight: 600;
+    color: #9be2e8;
+    text-shadow: 0 0 8px rgba(80, 201, 206, 0.4);
+}
+
+#logoContainer {
+    margin-top: 40px;
+    display: inline-block;
+    position: relative;
+}
+
+#logoCanvas {
+    border: 2px solid #fff;
+    border-radius: 10px;
+    background: #18212f;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+#toggleBtn {
+    margin-top: 15px;
+    padding: 10px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #4a90e2, #50c9ce);
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+#toggleBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #50c9ce;
+}
