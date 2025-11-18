@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lab 10 jQuery</title>
+    <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        background: #f5f6fa;
+        color: #2f3640;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        text-align: center;
+        color: #273c75;
+      }
+
+      p {
+        font-size: 18px;
+        margin: 15px 20px;
+      }
+
+      a.button,
+      .button_js,
+      #show_image {
+        display: inline-block;
+        margin: 10px 5px;
+        padding: 10px 20px;
+        background-color: #0097e6;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s, transform 0.2s;
+        cursor: pointer;
+      }
+
+      a.button:hover,
+      .button_js:hover,
+      #show_image:hover {
+        background-color: #40739e;
+        transform: scale(1.05);
+      }
+
+      button {
+        margin: 10px 5px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #44bd32;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+      }
+
+      button:hover {
+        background-color: #2f9e20;
+        transform: scale(1.05);
+      }
+
+      #hide_text,
+      #hide_text_js {
+        padding: 15px;
+        margin: 10px 20px;
+        background: #dcdde1;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      #special_div {
+        width: 220px;
+        height: 100px;
+        margin: 20px;
+        border: 2px solid #718093;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        background: #f1f2f6;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      #special_div.clicked {
+        border: 2px solid #e84118;
+        background-color: #ffeaa7;
+      }
+
+      .hovered {
+        background-color: #f0e68c;
+      }
+
+      #image {
+        display: none;
+        width: 250px;
+        margin: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      #image:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+      }
+
+      form {
+        margin: 20px;
+      }
+
+      input[type="text"] {
+        padding: 8px;
+        width: 200px;
+        border: 1px solid #dcdde1;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-right: 10px;
+      }
+
+      input[type="submit"] {
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #0097e6;
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s, transform 0.2s;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #40739e;
+        transform: scale(1.05);
+      }
+
+      span {
+        display: block;
+        margin: 10px 20px;
+        font-weight: bold;
+        color: #e84118;
+        font-size: 16px;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        alert("Бібліотека jQuery готова до роботи!");
+
+        let $text = $("#hide_text");
+        $text.hide();
+        $(".button").click(function () {
+          $text.show(200);
+        });
+
+        window.onload = function () {
+          document.getElementById("hide_text_js").style.display = "none";
+        };
+        window.visibleText = function () {
+          document.getElementById("hide_text_js").style.display = "block";
+        };
+
+        $("p:first").text("DOM first!");
+        $("p:last").text("DOM last!");
+        $("div").hover(
+          function () {
+            $(this).addClass("hovered");
+          },
+          function () {
+            $(this).removeClass("hovered");
+          }
+        );
+
+        $("#special_div").bind("click", function () {
+          $(this).addClass("clicked");
+        });
+        $("#special_div").bind("dblclick", function () {
+          $(this).removeClass("clicked");
+        });
+
+        $("#btn_single").bind("click", function () {
+          alert("Одинарний клік");
+        });
+        $("#btn_double").bind("dblclick", function () {
+          alert("Подвійний клік");
+        });
+
+        $("#show_image").click(function () {
+          $("#image").show();
+        });
+        $("#image").click(function () {
+          $(this).hide();
+        });
+        $("#image").mouseover(function () {
+          $(this).attr("title", "Підпис до зображення");
+        });
+
+        $("form").submit(function () {
+          if ($("input:first").val() == "correct") {
+            $("span").text("Перевіряєм...").show();
+            return true;
+          }
+          $("span").text("Неправильно!").show().fadeOut(1000);
+          return false;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <p>Перше повідомлення</p>
+
+    <h1>Лабораторна №10</h1>
+    <a href="#" class="button">Натисніть, щоб показати текст</a>
+    <div id="hide_text">Демонстраційний прихований текст</div>
+
+    <a href="#" class="button_js" onclick="visibleText();"
+      >Показати текст через JS</a
+    >
+    <div id="hide_text_js">Цей текст прихований за допомогою чистого JS</div>
+
+    <p>Останнє повідомлення</p>
+
+    <div id="special_div">Натисніть/подвійний клік</div>
+
+    <button id="btn_single">Одинарний клік</button>
+    <button id="btn_double">Подвійний клік</button>
+
+    <p id="show_image">Показати зображення</p>
+    <img id="image" src="js/image.jpg" alt="Зображення" />
+
+    <p>Введіть в текстове поле слово 'correct'.</p>
+    <form action="javascript:alert('Успішно!');">
+      <div>
+        <input type="text" />
+        <input type="submit" />
+      </div>
+    </form>
+    <span></span>
+  </body>
+</html>
