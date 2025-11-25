@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Лабораторна 11</title>
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <style>
+      .demo-box {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #333;
+      }
+      .demo-box {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #333;
+        background-color: #f1f2f6;
+      }
+      .button {
+        padding: 8px 15px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        background-color: #0097e6;
+        color: #fff;
+        cursor: pointer;
+      }
+      .button:hover {
+        background-color: #40739e;
+      }
+      .container {
+        border: 1px solid #2f3640;
+        padding: 20px;
+        margin: 10px;
+        background-color: #f5f6fa;
+      }
+      .button {
+        margin: 5px;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        background-color: #0097e6;
+        color: #fff;
+        cursor: pointer;
+      }
+      .button:hover {
+        background-color: #40739e;
+      }
+      .result {
+        margin: 10px;
+        padding: 10px;
+        border: 1px dashed #718093;
+        background-color: #dcdde1;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Завдання 1</h2>
+
+    <div id="html_demo" class="demo-box">Старий HTML-вміст</div>
+    <div id="css_demo" class="demo-box">CSS приклад</div>
+
+    <input id="val_demo" class="demo-box" value="Старе значення" type="text" />
+
+    <div id="attr_demo1" class="demo-box" title="Старий заголовок">
+      Приклад attr1
+    </div>
+    <div id="attr_demo2" class="demo-box" title="Старий заголовок">
+      Приклад attr2
+    </div>
+    <div id="attr_demo3" class="demo-box">Приклад attr3</div>
+    <div id="attr_demo4" class="demo-box" title="Старий заголовок">
+      Приклад attr4
+    </div>
+
+    <input
+      id="remove_attr_demo"
+      class="demo-box"
+      type="text"
+      disabled
+      value="Блоковане поле"
+    />
+
+    <h2>Завдання 2</h2>
+    <div id="prepend_demo" class="demo-box">
+      Абзац для демонстрації <b>prepend()</b>
+    </div>
+
+    <button id="clone_demo" class="button">Клонувати цю кнопку</button>
+
+    <div id="height_demo" class="demo-box" style="height: 50px">
+      Блок для демонстрації height()
+    </div>
+
+    <div id="outerHeight_demo" class="demo-box" style="height: 80px">
+      Натисни на мене для outerHeight()
+    </div>
+
+    <h2>Завдання 3</h2>
+    <div id="parent_div" class="container">
+      <p>Параграф 1</p>
+      <p>Параграф 2</p>
+      <div id="stop_div">
+        <div id="child_div" class="special">Дочірній елемент</div>
+      </div>
+    </div>
+
+    <button id="btn_children" class="button">.children()</button>
+    <button id="btn_is" class="button">.is()</button>
+    <button id="btn_parents" class="button">.parents()</button>
+    <button id="btn_closest" class="button">.closest()</button>
+    <button id="btn_parentsUntil" class="button">.parentsUntil()</button>
+
+    <div id="result" class="result">Результат буде тут</div>
+  </body>
+  <script>
+    $(document).ready(function () {
+      $("#html_demo").html("<b>Новий HTML-вміст</b>");
+
+      $("#css_demo").css({
+        color: "white",
+        "background-color": "teal",
+        padding: "10px",
+      });
+
+      $("#val_demo").val("Нове значення");
+
+      $("#attr_demo1").attr("title");
+      $("#attr_demo2").attr("title", "Новий підпис");
+      $("#attr_demo3").attr({ "data-role": "user", "data-id": "123" });
+      $("#attr_demo4").attr("title", function (i, val) {
+        return val + " (оновлено)";
+      });
+
+      $("#remove_attr_demo").removeAttr("disabled");
+    });
+    $(document).ready(function () {
+      $("#prepend_demo").prepend("<p>Доданий абзац на початок блоку</p>");
+
+      $("#clone_demo").click(function () {
+        let clone = $(this).clone();
+        clone.text("Це клон кнопки");
+        $("body").append(clone);
+      });
+
+      $("#height_demo").height(function (index, currentHeight) {
+        return currentHeight + 20;
+      });
+
+      $("#outerHeight_demo").click(function () {
+        let h = $(this).outerHeight();
+        alert("Повна висота елемента: " + h + "px");
+      });
+    });
+
+    $(document).ready(function () {
+      $("#btn_children").click(function () {
+        let childrenCount = $("#parent_div").children().length;
+        $("#result").text("Кількість дочірніх елементів: " + childrenCount);
+      });
+
+      $("#btn_is").click(function () {
+        let isSpecial = $("#check_div").is(".special");
+        $("#result").text("#check_div має клас 'special'? " + isSpecial);
+      });
+
+      $("#btn_parents").click(function () {
+        let parentsList = $("#child_div")
+          .parents()
+          .map(function () {
+            return this.tagName;
+          })
+          .get()
+          .join(", ");
+        $("#result").text("Список батьківських елементів: " + parentsList);
+      });
+
+      $("#btn_closest").click(function () {
+        let closestDiv = $("#child_div").closest("div").attr("id");
+        $("#result").text("Найближчий div до #child_div: " + closestDiv);
+      });
+
+      $("#btn_parentsUntil").click(function () {
+        let parentsUntil = $("#child_div")
+          .parentsUntil("#stop_div")
+          .map(function () {
+            return this.tagName;
+          })
+          .get()
+          .join(", ");
+        $("#result").text("Батьки до #stop_div: " + parentsUntil);
+      });
+    });
+  </script>
+</html>
