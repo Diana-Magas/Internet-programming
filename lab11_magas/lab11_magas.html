@@ -113,6 +113,31 @@
 
     <div id="result" class="result">Результат буде тут</div>
   </body>
+  <h2>Завдання 4</h2>
+  <ul id="task4_list" class="demo-box">
+    <li class="filter-item">Елемент 1</li>
+    <li class="filter-item">Елемент 2</li>
+    <li class="filter-item">Елемент 3</li>
+    <li class="filter-item">Елемент 4</li>
+    <li class="filter-item">Елемент 5</li>
+    <li class="filter-item">Елемент 6</li>
+  </ul>
+
+  <button id="btn_filter_class" class="button">
+    Змінити стиль всіх .filter-item
+  </button>
+  <button id="btn_filter_every3" class="button">
+    Змінити стиль кожного 3-го li
+  </button>
+
+  <h2>Завдання 5</h2>
+  <button id="btn_extend" class="button">$.extend()</button>
+  <button id="btn_fn_extend" class="button">$.fn.extend()</button>
+  <button id="btn_globalEval" class="button">$.globalEval()</button>
+  <button id="btn_grep" class="button">$.grep()</button>
+
+  <div id="task5_result" class="result"></div>
+
   <script>
     $(document).ready(function () {
       $("#html_demo").html("<b>Новий HTML-вміст</b>");
@@ -189,6 +214,90 @@
           .get()
           .join(", ");
         $("#result").text("Батьки до #stop_div: " + parentsUntil);
+      });
+    });
+
+    $(document).ready(function () {
+      $("#btn_filter_class").click(function () {
+        $(".filter-item")
+          .filter(function () {
+            return true;
+          })
+          .css({
+            color: "white",
+            "background-color": "green",
+            fontWeight: "bold",
+          })
+          .append(" modify");
+      });
+
+      $("#btn_filter_every3").click(function () {
+        $("#task4_list li")
+          .filter(function (index) {
+            return (index + 1) % 3 === 0;
+          })
+          .css({
+            color: "white",
+            "background-color": "orange",
+            fontStyle: "italic",
+          })
+          .append(" modify");
+      });
+
+      $("#btn_extend").click(function () {
+        let obj1 = { a: 1, b: 2 };
+        let obj2 = { b: 3, c: 4 };
+        let result = $.extend({}, obj1, obj2);
+        $("#task5_result").append(
+          "<p>$.extend: " + JSON.stringify(result) + "</p>"
+        );
+      });
+
+      $("#btn_fn_extend").click(function () {
+        $.fn.extend({
+          highlight: function () {
+            return this.css("background-color", "yellow");
+          },
+        });
+        $("#task4_list li").highlight();
+        $("#task5_result").append(
+          "<p>$.fn.extend: усі li підсвічені жовтим</p>"
+        );
+      });
+
+      $("#btn_globalEval").click(function () {
+        let code = 'console.log("Виконано $.globalEval");';
+        $.globalEval(code);
+        $("#task5_result").append(
+          "<p>$.globalEval: код виконано в консолі</p>"
+        );
+      });
+
+      $("#btn_grep").click(function () {
+        let numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+        let evens = $.grep(numbers, function (n) {
+          return n % 2 === 0;
+        });
+        let greaterThan4 = $.grep(numbers, function (n) {
+          return n > 4;
+        });
+        let lessThan3 = $.grep(numbers, function (n) {
+          return n < 3;
+        });
+        let divisibleBy3 = $.grep(numbers, function (n) {
+          return n % 3 === 0;
+        });
+        let notDivisibleBy2 = $.grep(numbers, function (n) {
+          return n % 2 !== 0;
+        });
+
+        $("#task5_result").append("<p>$.grep (even): " + evens + "</p>");
+        $("#task5_result").append("<p>$.grep (>4): " + greaterThan4 + "</p>");
+        $("#task5_result").append("<p>$.grep (<3): " + lessThan3 + "</p>");
+        $("#task5_result").append("<p>$.grep (%3): " + divisibleBy3 + "</p>");
+        $("#task5_result").append(
+          "<p>$.grep (not %2): " + notDivisibleBy2 + "</p>"
+        );
       });
     });
   </script>
